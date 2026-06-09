@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proveedores | Sistema Gasolinera</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+        
+        <div class="bg-blue-600 px-8 py-6 flex items-center justify-between">
+            <div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Registro de Proveedores</h2>
+                <p class="text-blue-100 text-sm mt-1">Módulo de Suministros y Abastecimiento</p>
+            </div>
+            <svg class="w-10 h-10 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2m-2 0H5m2 0H3m15 0H7"></path>
+            </svg>
+        </div>
+
+        <form class="px-8 py-8 space-y-6" action="" method="POST">
+            {% csrf_token %}
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Razón Social / Empresa</label>
+                    <input type="text" name="empresa" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition outline-none" placeholder="Ej. Distribuidora de Combustibles S.A.">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Categoría (Insumo)</label>
+                    <select name="categoria" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition outline-none">
+                        <option value="">Seleccione categoría...</option>
+                        <option value="combustible">Combustibles</option>
+                        <option value="aceites">Aceites y Lubricantes</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="limpieza">Artículos de Limpieza</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">RFC del Proveedor</label>
+                    <input type="text" name="rfc" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition uppercase outline-none" placeholder="XXX010101XXX">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Contacto Principal</label>
+                    <input type="text" name="contacto" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition outline-none" placeholder="Ej. Juan Pérez">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Teléfono</label>
+                    <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition outline-none" placeholder="477 123 4567">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Correo de Facturación</label>
+                    <input type="email" name="correo" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition outline-none" placeholder="ventas@proveedor.com">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end pt-6 border-t border-gray-200 gap-4 mt-8">
+                <button type="reset" class="px-6 py-3 text-sm font-bold text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition">
+                    Limpiar Datos
+                </button>
+                <button type="submit" class="px-6 py-3 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition">
+                    Guardar Proveedor
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
